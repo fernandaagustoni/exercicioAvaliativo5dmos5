@@ -11,15 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import java.util.List;
-
 import br.edu.ifsp.dmo.app15_agenda.R;
 import br.edu.ifsp.dmo.app15_agenda.model.Contato;
 import br.edu.ifsp.dmo.app15_agenda.view.ItemCliclListener;
 
+
 public class ContatoAdapter extends FirestoreRecyclerAdapter<Contato, ContatoAdapter.ContatoViewHolder> {
 
-    private ItemCliclListener clickListener;
+    private ItemCliclListener  clickListener;
 
     public ContatoAdapter(@NonNull FirestoreRecyclerOptions<Contato> options) {
         super(options);

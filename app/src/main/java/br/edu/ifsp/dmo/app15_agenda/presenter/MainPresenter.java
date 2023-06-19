@@ -2,6 +2,7 @@ package br.edu.ifsp.dmo.app15_agenda.presenter;
 
 import android.app.SearchManager;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -45,12 +46,16 @@ public class MainPresenter implements MainMVP.Presenter {
             searchView = searchView.toLowerCase(Locale.getDefault());
             if (searchView.length() == 0){
                 populate(recyclerView, null);
+                Log.v("","Entrei antes do if");
             } else{
                 query = database.collection(Constants.CONTACTS_COLLECTION).orderBy(Constants.ATTR_NAME).startAt(searchView).endAt(searchView + '\uf8ff');
+                Log.v("","Entrei depois do if" + " " + searchView);
             }
         }
+        FirestoreRecyclerOptions<Contato> options = new FirestoreRecyclerOptions.Builder<Contato>()
+                .setQuery(query, Contato.class)
+                .build();
 
-        FirestoreRecyclerOptions<Contato> options = new FirestoreRecyclerOptions.Builder<Contato>().setQuery(query, Contato.class).build();
         adapter = new ContatoAdapter(options);
         adapter.setClickListener(new ItemCliclListener() {
             @Override
