@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "796282563788",
+    "project_id": "agendadmo-3b7ea",
+    "storage_bucket": "agendadmo-3b7ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796282563788:android:2663ba01df42ae3d6fa669",
+        "android_client_info": {
+          "package_name": "br.edu.ifsp.app15_agenda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796282563788-lpg1t2p6477tm8jm3jq41rl20okkkb6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASJPqMOIQE0ZdCFYwJqmXLQ-ybaNoF7xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "796282563788-lpg1t2p6477tm8jm3jq41rl20okkkb6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796282563788:android:3eeb8ac869db79bd6fa669",
+        "android_client_info": {
+          "package_name": "br.edu.ifsp.dmo.app15_agenda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796282563788-lpg1t2p6477tm8jm3jq41rl20okkkb6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASJPqMOIQE0ZdCFYwJqmXLQ-ybaNoF7xk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "796282563788-lpg1t2p6477tm8jm3jq41rl20okkkb6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
