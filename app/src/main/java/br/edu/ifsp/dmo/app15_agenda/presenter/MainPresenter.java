@@ -13,6 +13,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.Locale;
+
 import br.edu.ifsp.dmo.app15_agenda.constant.Constants;
 import br.edu.ifsp.dmo.app15_agenda.model.Contato;
 import br.edu.ifsp.dmo.app15_agenda.mvp.MainMVP;
@@ -37,10 +39,18 @@ public class MainPresenter implements MainMVP.Presenter {
 
 
     @Override
-    public void populate(RecyclerView recyclerView) {
+    public void populate(RecyclerView recyclerView, String searchView)  {
         Query query = database.collection(Constants.CONTACTS_COLLECTION).orderBy(Constants.ATTR_NAME, Query.Direction.ASCENDING);
-        FirestoreRecyclerOptions<Contato> options = new FirestoreRecyclerOptions.Builder<Contato>().setQuery(query, Contato.class).build();
+        if (searchView != null){
+            searchView = searchView.toLowerCase(Locale.getDefault());
+            if (searchView.length() == 0){
+                populate(recyclerView, null);
+            } else{
+                query = database.collection(Constants.CONTACTS_COLLECTION).orderBy(Constants.ATTR_NAME).startAt(searchView).endAt(searchView + '\uf8ff');
+            }
+        }
 
+        FirestoreRecyclerOptions<Contato> options = new FirestoreRecyclerOptions.Builder<Contato>().setQuery(query, Contato.class).build();
         adapter = new ContatoAdapter(options);
         adapter.setClickListener(new ItemCliclListener() {
             @Override

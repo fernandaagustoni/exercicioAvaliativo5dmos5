@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -18,11 +19,12 @@ import br.edu.ifsp.dmo.app15_agenda.mvp.MainMVP;
 import br.edu.ifsp.dmo.app15_agenda.presenter.MainPresenter;
 
 public class MainActivity extends AppCompatActivity
-        implements MainMVP.View, View.OnClickListener {
+        implements MainMVP.View, View.OnClickListener, SearchView.OnQueryTextListener{
 
     private MainMVP.Presenter presenter;
     private FloatingActionButton mActionButton;
     private RecyclerView mRecyclerView;
+    private SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        presenter.populate(mRecyclerView);
+        presenter.populate(mRecyclerView, null);
         presenter.startListener();
     }
 
@@ -69,9 +71,26 @@ public class MainActivity extends AppCompatActivity
     private void findById(){
         mActionButton = findViewById(R.id.fab_new_contact);
         mRecyclerView = findViewById(R.id.recyler_view);
+        mSearchView = findViewById(R.id.search_view);
+        mSearchView.setOnQueryTextListener(this);
     }
 
     private void setListener(){
         mActionButton.setOnClickListener(this);
     }
+
+    @Override
+    public boolean onQueryTextSubmit(String search) {
+        presenter.populate(mRecyclerView, search);
+        presenter.startListener();
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String search) {
+        presenter.populate(mRecyclerView, search);
+        presenter.startListener();
+        return false;
+    }
+
 }
